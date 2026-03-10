@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CompuLab Manager - Login</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(90deg,#020617,#0f172a);
+}
+
+/* TARJETA LOGIN */
+
+.login-box{
+background:#f8fafc;
+padding:35px;
+width:350px;
+border-radius:12px;
+border:3px solid #facc15;
+text-align:center;
+}
+
+/* ICONO */
+
+.logo{
+width:55px;
+height:55px;
+background:#000;
+color:#facc15;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:auto;
+border-radius:10px;
+font-size:22px;
+margin-bottom:15px;
+}
+
+h2{
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:13px;
+color:#555;
+margin-bottom:25px;
+}
+
+/* INPUTS */
+
+.form-group{
+text-align:left;
+margin-bottom:15px;
+}
+
+label{
+font-size:13px;
+font-weight:bold;
+display:block;
+margin-bottom:5px;
+}
+
+input{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:2px solid #facc15;
+outline:none;
+}
+
+/* OPCIONES */
+
+.options{
+display:flex;
+justify-content:space-between;
+font-size:12px;
+margin-bottom:20px;
+}
+
+.options a{
+color:red;
+text-decoration:none;
+}
+
+/* BOTÓN */
+
+.login-btn{
+width:100%;
+padding:10px;
+background:#facc15;
+border:none;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+/* SEPARADOR */
+
+hr{
+margin:15px 0;
+border:1px solid #ddd;
+}
+
+/* BOTONES EXTRA */
+
+.extra{
+display:flex;
+gap:10px;
+}
+
+.extra button{
+flex:1;
+padding:10px;
+border-radius:8px;
+border:none;
+color:white;
+cursor:pointer;
+font-size:12px;
+}
+
+.roles{
+background:black;
+}
+
+.access{
+background:#ef4444;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<div class="logo">⚙</div>
+
+<h2>CompuLab Manager</h2>
+<p class="subtitle">Sistema de Gestión de Laboratorios</p>
+
+<!-- FORMULARIO MODIFICADO -->
+<form action="dashboard.html">
+
+<div class="form-group">
+<label>Correo Electrónico</label>
+<input type="email" placeholder="usuario@compulab.com">
+</div>
+
+<div class="form-group">
+<label>Contraseña</label>
+<input type="password" placeholder="********">
+</div>
+
+<div class="options">
+<label><input type="checkbox"> Recordarme</label>
+<a href="#">¿Olvidaste tu contraseña?</a>
+</div>
+
+<button class="login-btn" type="submit">Iniciar Sesión</button>
+
+</form>
+
+<hr>
+
+<div class="extra">
+<button class="roles">Roles<br>Almacén, Soporte</button>
+<button class="access">Acceso<br>Responsable, Usuario</button>
+</div>
+
+</div>
+
+</body>
+</html>

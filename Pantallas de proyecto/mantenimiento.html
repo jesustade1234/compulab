@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CompuLab Manager</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#f4f4f4;
+}
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:230px;
+background:#0b0b0b;
+color:white;
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar h2{
+margin-bottom:30px;
+color:#f5c400;
+}
+
+.sidebar ul{
+list-style:none;
+flex:1;
+}
+
+.sidebar ul li{
+border-radius:6px;
+}
+
+.sidebar ul li a{
+display:block;
+padding:12px;
+text-decoration:none;
+color:white;
+}
+
+.sidebar ul li a:hover{
+background:#1f1f1f;
+}
+
+.sidebar .active a{
+background:#f5c400;
+color:black;
+font-weight:bold;
+border-radius:6px;
+}
+
+.logout{
+background:#1f1f1f;
+border:none;
+color:white;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+padding:20px;
+}
+
+/* TOPBAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+}
+
+.topbar input{
+width:60%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* TITLE */
+
+.title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:20px;
+}
+
+.card{
+padding:20px;
+border-radius:10px;
+background:white;
+}
+
+.card p{
+font-size:22px;
+font-weight:bold;
+margin-top:10px;
+}
+
+.blue{border-left:6px solid #3b82f6;}
+.yellow{border-left:6px solid #facc15;}
+.green{border-left:6px solid #22c55e;}
+.purple{border-left:6px solid #a855f7;}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+th, td{
+padding:12px;
+text-align:left;
+border-bottom:1px solid #eee;
+}
+
+th{
+background:#f8f8f8;
+}
+
+.status{
+padding:5px 10px;
+border-radius:5px;
+font-size:12px;
+}
+
+.proceso{
+background:#fde68a;
+}
+
+.completo{
+background:#bbf7d0;
+}
+
+.programado{
+background:#bfdbfe;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<aside class="sidebar">
+<h2>CompuLab Manager</h2>
+
+<ul>
+<li><a href="dashboard.html"> Dashboard</a></li>
+<li><a href="requisiciones.html"> Requisiciones</a></li>
+<li><a href="vales de salida.html"> Vales de salida</a></li>
+<li><a href="reporte de fallas.html">⚠ Reportes de falla</a></li>
+<li class="active"><a href="mantenimiento.html"> Mantenimiento</a></li>
+<li><a href="equipos.html"> Equipos</a></li>
+<li><a href="usuarios.html"> Usuarios</a></li>
+
+</ul>
+
+<button class="logout">Cerrar Sesión</button>
+</aside>
+
+<main class="main">
+
+<header class="topbar">
+<input type="text" placeholder="Buscar equipos, requisiciones...">
+<div>Admin Usuario</div>
+</header>
+
+<div class="title">
+<h1>Mantenimientos</h1>
+<button class="btn">+ Nuevo Mantenimiento</button>
+</div>
+
+<div class="cards">
+
+<div class="card blue">
+<h3>Programados</h3>
+<p>5</p>
+</div>
+
+<div class="card yellow">
+<h3>En Proceso</h3>
+<p>8</p>
+</div>
+
+<div class="card green">
+<h3>Completados</h3>
+<p>42</p>
+</div>
+
+<div class="card purple">
+<h3>Costo Total</h3>
+<p>$18,450</p>
+</div>
+
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>Número</th>
+<th>Equipo</th>
+<th>Laboratorio</th>
+<th>Tipo</th>
+<th>Responsable</th>
+<th>Fecha Inicio</th>
+<th>Fecha Fin</th>
+<th>Costo</th>
+<th>Estado</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>MNT-2026-034</td>
+<td>Microscopio MIC 015</td>
+<td>Lab. Biología</td>
+<td>Preventivo</td>
+<td>Soporte Técnico</td>
+<td>09/03/2026</td>
+<td>10/03/2026</td>
+<td>$450</td>
+<td class="status proceso">En Proceso</td>
+</tr>
+
+<tr>
+<td>MNT-2026-033</td>
+<td>Balanza BAL 008</td>
+<td>Lab. Química</td>
+<td>Correctivo</td>
+<td>Soporte Técnico</td>
+<td>08/03/2026</td>
+<td>08/03/2026</td>
+<td>$280</td>
+<td class="status completo">Completado</td>
+</tr>
+
+<tr>
+<td>MNT-2026-032</td>
+<td>Centrífuga CEN 012</td>
+<td>Lab. Química</td>
+<td>Preventivo</td>
+<td>Proveedor Externo</td>
+<td>12/03/2026</td>
+<td>12/03/2026</td>
+<td>$600</td>
+<td class="status programado">Programado</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</main>
+
+</div>
+
+</body>
+</html>

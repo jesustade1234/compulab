@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Vales de Salida - CompuLab</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+display:flex;
+background:#f4f4f4;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#000;
+color:white;
+height:100vh;
+padding:20px;
+}
+
+.logo{
+color:#ffc400;
+font-weight:bold;
+font-size:18px;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:12px;
+margin-bottom:30px;
+}
+
+.menu a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+text-decoration:none;
+color:white;
+border-radius:8px;
+}
+
+.menu a:hover,
+.menu .active{
+background:#ffc400;
+color:black;
+}
+
+.logout{
+position:absolute;
+bottom:20px;
+left:20px;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+}
+
+/* TOPBAR */
+
+.topbar{
+background:black;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:4px solid #ffc400;
+}
+
+.search{
+width:400px;
+padding:10px;
+border-radius:20px;
+border:2px solid #ffc400;
+}
+
+/* CONTENT */
+
+.content{
+padding:25px;
+}
+
+.title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.subtitle2{
+color:#777;
+font-size:13px;
+margin-bottom:20px;
+}
+
+/* ACTION BAR */
+
+.action-bar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.new-btn{
+background:#2f6df6;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* FILTERS */
+
+.filters{
+background:white;
+padding:12px;
+border-radius:10px;
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.filters input,
+.filters select{
+padding:8px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+th{
+background:#f2f2f2;
+padding:10px;
+font-size:13px;
+text-align:left;
+color:#666;
+}
+
+td{
+padding:10px;
+border-top:1px solid #eee;
+font-size:13px;
+}
+
+/* STATUS */
+
+.status{
+padding:3px 8px;
+border-radius:10px;
+font-size:12px;
+}
+
+.entregado{
+background:#d4edda;
+color:#155724;
+}
+
+.pendiente{
+background:#fff3cd;
+color:#856404;
+}
+
+.parcial{
+background:#f8d7da;
+color:#721c24;
+}
+
+/* ACTIONS */
+
+.actions span{
+margin-right:8px;
+cursor:pointer;
+}
+
+/* PAGINATION */
+
+.pagination{
+display:flex;
+justify-content:flex-end;
+gap:5px;
+margin-top:15px;
+}
+
+.page{
+padding:5px 10px;
+border:1px solid #ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+.active-page{
+background:#2f6df6;
+color:white;
+border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">CompuLab Manager</div>
+<div class="subtitle">Gestión de Cómputo</div>
+
+<div class="menu">
+<a href="dashboard.html">Dashboard</a>
+<a href="requisiciones.html">Requisiciones</a>
+<a class="active" href="vales de salida.html">Vales de Salida</a>
+<a href="reporte de fallas.html">Reportes de Falla</a>
+<a href="mantenimiento.html">Mantenimientos</a>
+<a href="equipos.html">Equipos</a>
+<a href="usuarios.html">Usuarios</a>
+
+</div>
+
+<div class="logout">Cerrar sesión</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+<input class="search" placeholder="Buscar equipos, requisiciones...">
+<div style="color:white;">Admin Usuario</div>
+</div>
+
+<div class="content">
+
+<div class="action-bar">
+<div>
+<div class="title">Vales de Salida</div>
+<div class="subtitle2">Gestiona la entrega de equipos a los laboratorios</div>
+</div>
+
+<button class="new-btn">+ Nuevo Vale</button>
+</div>
+
+<!-- FILTERS -->
+
+<div class="filters">
+<input type="text" placeholder="Buscar por número, laboratorio, responsable...">
+<select>
+<option>Todos los estados</option>
+<option>Entregado</option>
+<option>Pendiente</option>
+<option>Parcial</option>
+</select>
+
+<input type="date">
+
+<button>Filtros</button>
+</div>
+
+<!-- TABLE -->
+
+<table>
+
+<tr>
+<th>NÚMERO</th>
+<th>FECHA/HORA</th>
+<th>LABORATORIO</th>
+<th>RESPONSABLE</th>
+<th>EQUIPO</th>
+<th>SOLICITADA</th>
+<th>ENTREGADA</th>
+<th>ENTREGÓ</th>
+<th>ESTADO</th>
+<th>ACCIONES</th>
+</tr>
+
+<tr>
+<td style="color:#2f6df6;">VAL-2026-089</td>
+<td>09/03/2026 13:15</td>
+<td>Lab. Física</td>
+<td>Dra. María García</td>
+<td>Multímetro Digital</td>
+<td>3</td>
+<td>3</td>
+<td>Carlos Almacén</td>
+<td><span class="status entregado">Entregado</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td style="color:#2f6df6;">VAL-2026-088</td>
+<td>08/03/2026 10:30</td>
+<td>Lab. Química</td>
+<td>Dr. Juan Pérez</td>
+<td>Pipeta Automática</td>
+<td>5</td>
+<td>5</td>
+<td>Ana Almacén</td>
+<td><span class="status entregado">Entregado</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td style="color:#2f6df6;">VAL-2026-087</td>
+<td>08/03/2026 09:15</td>
+<td>Lab. Biología</td>
+<td>Dr. Carlos López</td>
+<td>Microscopio</td>
+<td>2</td>
+<td>0</td>
+<td>-</td>
+<td><span class="status pendiente">Pendiente</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td style="color:#2f6df6;">VAL-2026-086</td>
+<td>07/03/2026 14:45</td>
+<td>Lab. Computación</td>
+<td>Ing. Ana Martínez</td>
+<td>Mouse inalámbrico</td>
+<td>10</td>
+<td>8</td>
+<td>Carlos Almacén</td>
+<td><span class="status parcial">Parcial</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
+</tr>
+
+<tr>
+<td style="color:#2f6df6;">VAL-2026-085</td>
+<td>06/03/2026 11:00</td>
+<td>Lab. Química</td>
+<td>Dr. Pedro Ruiz</td>
+<td>Termómetro Digital</td>
+<td>4</td>
+<td>4</td>
+<td>Ana Almacén</td>
+<td><span class="status entregado">Entregado</span></td>
+<td class="actions">👁️ ✏️ 🗑️</td>
+</tr>
+
+</table>
+
+<div class="pagination">
+<div class="page">Anterior</div>
+<div class="page active-page">1</div>
+<div class="page">2</div>
+<div class="page">3</div>
+<div class="page">Siguiente</div>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

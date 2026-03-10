@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CompuLab Manager - Usuarios</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:230px;
+background:#0b0b0b;
+color:white;
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar h2{
+color:#facc15;
+margin-bottom:5px;
+}
+
+.sidebar small{
+color:#aaa;
+margin-bottom:25px;
+display:block;
+}
+
+.sidebar ul{
+list-style:none;
+flex:1;
+}
+
+.sidebar ul li{
+border-radius:6px;
+}
+
+.sidebar ul li a{
+display:block;
+padding:12px;
+text-decoration:none;
+color:white;
+border-radius:6px;
+}
+
+.sidebar ul li a:hover{
+background:#1f1f1f;
+}
+
+.sidebar ul li.active a{
+background:#facc15;
+color:black;
+font-weight:bold;
+}
+
+.logout{
+background:#1f1f1f;
+color:white;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+/* TOPBAR */
+
+.topbar{
+background:#0b0b0b;
+padding:12px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:3px solid #facc15;
+}
+
+.topbar input{
+width:40%;
+padding:8px;
+border-radius:6px;
+border:none;
+}
+
+.user{
+color:white;
+font-size:14px;
+}
+
+/* CONTENIDO */
+
+.content{
+padding:25px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* TARJETAS ROLES */
+
+.roles{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:15px;
+}
+
+.role-card{
+background:white;
+padding:15px;
+border-radius:10px;
+border:1px solid #eee;
+}
+
+.role-card h3{
+margin-bottom:5px;
+font-size:16px;
+}
+
+.role-card ul{
+font-size:13px;
+margin-left:15px;
+color:#555;
+}
+
+/* FILTROS */
+
+.filters{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.filters input,
+.filters select{
+padding:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* TABLA */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+th,td{
+padding:10px;
+text-align:left;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+th{
+background:#f3f4f6;
+font-size:13px;
+color:#555;
+}
+
+/* AVATAR */
+
+.avatar{
+width:28px;
+height:28px;
+border-radius:50%;
+background:#2563eb;
+color:white;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+margin-right:8px;
+}
+
+/* ROLES */
+
+.role{
+padding:4px 8px;
+border-radius:10px;
+font-size:12px;
+}
+
+.admin{background:#e9d5ff;}
+.soporte{background:#bfdbfe;}
+.responsable{background:#bbf7d0;}
+.usuario{background:#e5e7eb;}
+
+/* ESTADO */
+
+.status{
+padding:4px 8px;
+border-radius:10px;
+font-size:12px;
+}
+
+.activo{background:#bbf7d0;}
+.inactivo{background:#fecaca;}
+
+/* ACCIONES */
+
+.actions span{
+margin-right:8px;
+cursor:pointer;
+}
+
+/* PAGINACIÓN */
+
+.pagination{
+margin-top:10px;
+display:flex;
+justify-content:flex-end;
+gap:5px;
+}
+
+.pagination button{
+padding:5px 10px;
+border:1px solid #ccc;
+background:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+.pagination .active{
+background:#2563eb;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<h2>CompuLab Manager</h2>
+<small>Gestión de Cómputo</small>
+
+<ul>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="requisiciones.html">Requisiciones</a></li>
+<li><a href="vales de salida.html">Vales de salida</a></li>
+<li><a href="reporte de fallas.html">Reportes de falla</a></li>
+<li><a href="mantenimiento.html">Mantenimientos</a></li>
+<li><a href="equipos.html">Equipos</a></li>
+<li class="active"><a href="usuarios.html">Usuarios</a></li>
+</ul>
+
+<button class="logout">Cerrar Sesión</button>
+
+</aside>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+<input type="text" placeholder="Buscar equipos, requisiciones...">
+<div class="user">Admin Usuario</div>
+</div>
+
+<div class="content">
+
+<div class="header">
+<h2>Usuarios</h2>
+<button class="btn">+ Nuevo Usuario</button>
+</div>
+
+<!-- TARJETAS ROLES -->
+
+<div class="roles">
+
+<div class="role-card">
+<h3>Almacén</h3>
+<ul>
+<li>Vales</li>
+<li>Requisiciones</li>
+<li>Inventario</li>
+</ul>
+</div>
+
+<div class="role-card">
+<h3>Soporte</h3>
+<ul>
+<li>Reportes</li>
+<li>Mantenimientos</li>
+<li>Equipos</li>
+</ul>
+</div>
+
+<div class="role-card">
+<h3>Responsable</h3>
+<ul>
+<li>Requisiciones</li>
+<li>Reportes</li>
+<li>Consultas</li>
+</ul>
+</div>
+
+<div class="role-card">
+<h3>Usuario</h3>
+<ul>
+<li>Consultas</li>
+</ul>
+</div>
+
+</div>
+
+<!-- FILTROS -->
+
+<div class="filters">
+<input type="text" placeholder="Buscar por nombre, email...">
+<select>
+<option>Todos los roles</option>
+</select>
+<select>
+<option>Todos los estados</option>
+</select>
+<button>Filtros</button>
+</div>
+
+<!-- TABLA -->
+
+<table>
+
+<thead>
+<tr>
+<th>USUARIO</th>
+<th>EMAIL</th>
+<th>ROL</th>
+<th>LABORATORIO</th>
+<th>TELÉFONO</th>
+<th>ESTADO</th>
+<th>ÚLTIMO ACCESO</th>
+<th>ACCIONES</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td><span class="avatar">CA</span>Carlos Almacén</td>
+<td>carlos@lab.com</td>
+<td><span class="role admin">Almacén</span></td>
+<td>Almacén General</td>
+<td>555 0101</td>
+<td><span class="status activo">Activo</span></td>
+<td>09/03/2026 15:30</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td><span class="avatar">AS</span>Ana Soporte</td>
+<td>ana@lab.com</td>
+<td><span class="role soporte">Soporte</span></td>
+<td>Soporte Técnico</td>
+<td>555 0102</td>
+<td><span class="status activo">Activo</span></td>
+<td>09/03/2026 14:15</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td><span class="avatar">JP</span>Dr. Juan Pérez</td>
+<td>juan@lab.com</td>
+<td><span class="role responsable">Responsable</span></td>
+<td>Lab. Química</td>
+<td>555 0103</td>
+<td><span class="status activo">Activo</span></td>
+<td>09/03/2026 13:00</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td><span class="avatar">MG</span>Dra. María García</td>
+<td>maria@lab.com</td>
+<td><span class="role responsable">Responsable</span></td>
+<td>Lab. Física</td>
+<td>555 0104</td>
+<td><span class="status activo">Activo</span></td>
+<td>09/03/2026 11:45</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td><span class="avatar">PE</span>Pedro Estudiante</td>
+<td>pedro@lab.com</td>
+<td><span class="role usuario">Usuario</span></td>
+<td>Lab. Química</td>
+<td>555 0105</td>
+<td><span class="status inactivo">Inactivo</span></td>
+<td>05/03/2026 10:20</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="pagination">
+<button>Anterior</button>
+<button class="active">1</button>
+<button>2</button>
+<button>Siguiente</button>
+</div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

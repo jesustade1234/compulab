@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CompuLab Manager</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+display:flex;
+background:#f2f2f2;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#000;
+color:white;
+height:100vh;
+padding:20px;
+}
+
+.logo{
+color:#ffc400;
+font-weight:bold;
+font-size:18px;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:12px;
+margin-bottom:30px;
+}
+
+.menu a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
+
+.menu a:hover{
+background:#ffc400;
+color:black;
+}
+
+.logout{
+position:absolute;
+bottom:20px;
+left:20px;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+padding:20px;
+}
+
+/* TOP BAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.search{
+width:400px;
+padding:10px;
+border-radius:20px;
+border:2px solid #ffc400;
+}
+
+/* CARDS */
+
+.cards{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+}
+
+.card{
+flex:1;
+padding:15px;
+border-radius:10px;
+color:white;
+}
+
+.yellow{
+background:#ffc400;
+color:black;
+}
+
+.red{
+background:#ff3b3b;
+}
+
+.black{
+background:#111;
+}
+
+/* DASH GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.box{
+background:white;
+border-radius:10px;
+padding:15px;
+border:2px solid #ddd;
+}
+
+.box h3{
+margin-bottom:10px;
+}
+
+/* FAKE CHART */
+
+.chart{
+height:180px;
+background:linear-gradient(to top,#ffc400 40%,transparent 40%);
+border-radius:8px;
+}
+
+/* ACTIVITY */
+
+.activity-item{
+display:flex;
+justify-content:space-between;
+background:#f4f4f4;
+padding:10px;
+border-radius:8px;
+margin-bottom:8px;
+}
+
+/* BUTTONS */
+
+.actions{
+display:flex;
+gap:15px;
+margin-top:20px;
+}
+
+.btn{
+flex:1;
+padding:15px;
+border-radius:10px;
+border:none;
+font-weight:bold;
+cursor:pointer;
+}
+
+.btn-yellow{
+background:#ffc400;
+}
+
+.btn-black{
+background:black;
+color:white;
+}
+
+.btn-red{
+background:#ff3b3b;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">CompuLab Manager</div>
+<div class="subtitle">Gestión de Cómputo</div>
+
+<div class="menu">
+
+<a href="dashboard.html"> Dashboard</a>
+
+<a href="requisiciones.html"> Requisiciones</a>
+
+<a href="vales de salida.html"> Vales de salida</a>
+
+<a href="reporte de fallas.html"> Reportes de falla</a>
+
+<a href="mantenimiento.html"> Mantenimientos</a>
+
+<a href="equipos.html">Equipos</a>
+
+<a href="usuarios.html"> Usuarios</a>
+
+
+
+</div>
+
+<div class="logout">Cerrar sesión</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+<input class="search" placeholder="Buscar equipos, requisiciones...">
+<div>Admin Usuario</div>
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card yellow">
+<h4>ENTRADAS</h4>
+<ul>
+<li>Requisiciones</li>
+<li>Vales de salida</li>
+<li>Reportes de falla</li>
+<li>Mantenimientos</li>
+</ul>
+</div>
+
+<div class="card red">
+<h4>PROCESOS</h4>
+<ul>
+<li>Validar roles/permisos</li>
+<li>Generar números</li>
+<li>Validar cantidades</li>
+<li>Actualizar estados</li>
+</ul>
+</div>
+
+<div class="card black">
+<h4>SALIDAS</h4>
+<ul>
+<li>Equipos por lab</li>
+<li>Historial de equipos</li>
+<li>Fallas pendientes</li>
+<li>Reportes de vales</li>
+</ul>
+</div>
+
+</div>
+
+<!-- GRID -->
+
+<div class="grid">
+
+<div class="box">
+<h3>Requisiciones y Vales</h3>
+<div class="chart"></div>
+</div>
+
+<div class="box">
+<h3>Estado de Equipos</h3>
+<div class="chart"></div>
+</div>
+
+<div class="box">
+<h3>Equipos por laboratorio</h3>
+<div class="chart"></div>
+</div>
+
+<div class="box">
+<h3>Actividad reciente</h3>
+
+<div class="activity-item">
+<span>REQ-2026-142</span>
+<span>Aprobado</span>
+</div>
+
+<div class="activity-item">
+<span>VAL-2026-089</span>
+<span>Entregado</span>
+</div>
+
+<div class="activity-item">
+<span>REP-2026-056</span>
+<span>Pendiente</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- BUTTONS -->
+
+<div class="actions">
+
+<button class="btn btn-yellow">Nueva Requisición</button>
+
+<button class="btn btn-black">Nuevo Vale</button>
+
+<button class="btn btn-red">Reportar Falla</button>
+
+<button class="btn btn-yellow">Solicitud de Compra</button>
+
+</div>
+
+</div>
+
+</body>
+</html>

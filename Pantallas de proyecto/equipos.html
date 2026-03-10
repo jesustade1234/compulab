@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CompuLab Manager - Equipos</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+/* CONTENEDOR GENERAL */
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:230px;
+background:#0b0b0b;
+color:white;
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar h2{
+color:#facc15;
+margin-bottom:5px;
+}
+
+.sidebar small{
+color:#aaa;
+margin-bottom:25px;
+display:block;
+}
+
+.sidebar ul{
+list-style:none;
+flex:1;
+}
+
+.sidebar ul li{
+border-radius:6px;
+}
+
+.sidebar ul li a{
+display:block;
+padding:12px;
+text-decoration:none;
+color:white;
+}
+
+.sidebar ul li a:hover{
+background:#1f1f1f;
+}
+
+.active a{
+background:#facc15;
+color:black;
+font-weight:bold;
+border-radius:6px;
+}
+
+.logout{
+background:#1f1f1f;
+color:white;
+border:none;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+/* TOPBAR */
+
+.topbar{
+background:#0b0b0b;
+padding:12px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:3px solid #facc15;
+}
+
+.topbar input{
+width:40%;
+padding:8px;
+border-radius:6px;
+border:none;
+}
+
+.user{
+color:white;
+font-size:14px;
+}
+
+/* CONTENIDO */
+
+.content{
+padding:25px;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.header h1{
+font-size:22px;
+}
+
+.btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* FILTROS */
+
+.filters{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.filters input,
+.filters select{
+padding:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* TABLA */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+th,td{
+padding:10px;
+text-align:left;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+th{
+background:#f3f4f6;
+font-size:13px;
+color:#555;
+}
+
+/* ESTADOS */
+
+.status{
+padding:4px 8px;
+border-radius:10px;
+font-size:12px;
+}
+
+.operativo{
+background:#bbf7d0;
+}
+
+.mantenimiento{
+background:#fde68a;
+}
+
+.falla{
+background:#fecaca;
+}
+
+/* ACCIONES */
+
+.actions span{
+margin-right:8px;
+cursor:pointer;
+}
+
+/* PAGINACIÓN */
+
+.pagination{
+margin-top:10px;
+display:flex;
+justify-content:flex-end;
+gap:5px;
+}
+
+.pagination button{
+padding:5px 10px;
+border:1px solid #ccc;
+background:white;
+cursor:pointer;
+border-radius:5px;
+}
+
+.pagination .active{
+background:#2563eb;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<h2>CompuLab Manager</h2>
+<small>Gestión de Cómputo</small>
+
+<ul>
+<li><a href="dashboard.html"> Dashboard</a></li>
+<li><a href="requisiciones.html"> Requisiciones</a></li>
+<li><a href="vales de salida.html"> Vales de Salida</a></li>
+<li><a href="reporte de fallas.html"> Reportes de Falla</a></li>
+<li><a href="mantenimiento.html"> Mantenimientos</a></li>
+<li class="active"><a href="equipos.html"> Equipos</a></li>
+<li><a href="usuarios.html"> Usuarios</a></li>
+
+</ul>
+
+<button class="logout">Cerrar Sesión</button>
+
+</aside>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+<input type="text" placeholder="Buscar equipos, requisiciones...">
+<div class="user">Admin Usuario</div>
+</div>
+
+<div class="content">
+
+<div class="header">
+<h1>Equipos</h1>
+<button class="btn">+ Nuevo Equipo</button>
+</div>
+
+<div class="filters">
+<input type="text" placeholder="Buscar por código, nombre, marca...">
+<select>
+<option>Todos los estados</option>
+</select>
+<select>
+<option>Todos los laboratorios</option>
+</select>
+<button>Filtros</button>
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>CÓDIGO</th>
+<th>EQUIPO</th>
+<th>CATEGORÍA</th>
+<th>LABORATORIO</th>
+<th>MARCA/MODELO</th>
+<th>ESTADO</th>
+<th>RESPONSABLE</th>
+<th>VALOR</th>
+<th>ACCIONES</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>MIC-015</td>
+<td>Microscopio Óptico Binocular</td>
+<td>Óptica</td>
+<td>Lab. Biología</td>
+<td>Olympus CX23</td>
+<td><span class="status operativo">Operativo</span></td>
+<td>Dr. Carlos López</td>
+<td>$2,500</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td>BAL-008</td>
+<td>Balanza Analítica Digital</td>
+<td>Medición</td>
+<td>Lab. Química</td>
+<td>Mettler Toledo</td>
+<td><span class="status operativo">Operativo</span></td>
+<td>Dr. Juan Pérez</td>
+<td>$3,200</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td>CEN-012</td>
+<td>Centrífuga de Laboratorio</td>
+<td>Separación</td>
+<td>Lab. Química</td>
+<td>Eppendorf</td>
+<td><span class="status mantenimiento">Mantenimiento</span></td>
+<td>Dr. Pedro Ruiz</td>
+<td>$4,800</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td>OSC-005</td>
+<td>Osciloscopio Digital</td>
+<td>Electrónica</td>
+<td>Lab. Física</td>
+<td>Tektronix</td>
+<td><span class="status falla">Falla</span></td>
+<td>Dra. María García</td>
+<td>$5,500</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+<tr>
+<td>PC-025</td>
+<td>Computadora de Escritorio</td>
+<td>Cómputo</td>
+<td>Lab. Computación</td>
+<td>Dell Optiplex</td>
+<td><span class="status operativo">Operativo</span></td>
+<td>Ing. Ana Martínez</td>
+<td>$1,800</td>
+<td class="actions">👁 ✏ 🗑</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="pagination">
+<button>Anterior</button>
+<button class="active">1</button>
+<button>2</button>
+<button>3</button>
+<button>Siguiente</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

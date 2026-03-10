@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Requisiciones - CompuLab</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+display:flex;
+background:#f4f4f4;
+}
+
+/* MENU */
+
+.sidebar{
+width:240px;
+background:black;
+color:white;
+height:100vh;
+padding:20px;
+}
+
+.logo{
+color:#ffc400;
+font-weight:bold;
+font-size:18px;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:12px;
+margin-bottom:30px;
+}
+
+.menu a{
+display:block;
+padding:12px;
+margin-bottom:8px;
+text-decoration:none;
+color:white;
+border-radius:8px;
+}
+
+.menu a:hover,
+.menu .active{
+background:#ffc400;
+color:black;
+}
+
+.logout{
+position:absolute;
+bottom:20px;
+left:20px;
+}
+
+/* MAIN */
+
+.main{
+flex:1;
+}
+
+/* TOPBAR */
+
+.topbar{
+background:black;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:4px solid #ffc400;
+}
+
+.search{
+width:400px;
+padding:10px;
+border-radius:20px;
+border:2px solid #ffc400;
+}
+
+/* CONTENT */
+
+.content{
+padding:25px;
+}
+
+/* FILTERS */
+
+.filters{
+background:white;
+padding:15px;
+border-radius:12px;
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.filters input,
+.filters select{
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.filters button{
+background:#eee;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:10px;
+overflow:hidden;
+}
+
+th{
+background:#f2f2f2;
+text-align:left;
+padding:12px;
+font-size:14px;
+color:#555;
+}
+
+td{
+padding:12px;
+border-top:1px solid #eee;
+font-size:14px;
+}
+
+/* PRIORITY */
+
+.prioridad{
+padding:4px 10px;
+border-radius:10px;
+font-size:12px;
+font-weight:bold;
+}
+
+.baja{background:#d4edda;color:#155724;}
+.media{background:#fff3cd;color:#856404;}
+.alta{background:#f8d7da;color:#721c24;}
+
+/* ESTADO */
+
+.estado{
+padding:4px 10px;
+border-radius:10px;
+font-size:12px;
+}
+
+.aprobado{background:#d4edda;}
+.pendiente{background:#fff3cd;}
+.proceso{background:#cce5ff;}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<div class="sidebar">
+
+<div class="logo">CompuLab Manager</div>
+<div class="subtitle">Gestión de Cómputo</div>
+
+<div class="menu">
+<a href="dashboard.html">Dashboard</a>
+<a class="active" href="requisiciones.html">Requisiciones</a>
+<a href="vales de salida.html">Vales de salida</a>
+<a href="reporte de fallas.html">Reportes de falla</a>
+<a href="mantenimiento.html">Mantenimientos</a>
+<a href="equipos.html">Equipos</a>
+<a href="usuarios.html">Usuarios</a>
+
+</div>
+
+<div class="logout">Cerrar sesión</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<div class="topbar">
+
+<input class="search" placeholder="Buscar equipos, requisiciones...">
+
+<div style="color:white;">
+Admin Usuario
+</div>
+
+</div>
+
+<div class="content">
+
+<!-- FILTROS -->
+
+<div class="filters">
+
+<input type="text" placeholder="Buscar...">
+
+<select>
+<option>Todos los estados</option>
+<option>Aprobado</option>
+<option>Pendiente</option>
+<option>En proceso</option>
+</select>
+
+<select>
+<option>Todos los laboratorios</option>
+<option>Lab 1</option>
+<option>Lab 2</option>
+<option>Lab 3</option>
+</select>
+
+<button>Filtros</button>
+
+</div>
+
+<!-- TABLA -->
+
+<table>
+
+<tr>
+<th>NÚMERO</th>
+<th>FECHA/HORA</th>
+<th>LABORATORIO</th>
+<th>SOLICITANTE</th>
+<th>EQUIPO</th>
+<th>CANTIDAD</th>
+<th>PRIORIDAD</th>
+<th>ESTADO</th>
+</tr>
+
+<tr>
+<td style="color:#0066ff;">REQ-2026-142</td>
+<td>09/03/2026 14:30</td>
+<td>Lab 1</td>
+<td>Ing. Juan Pérez</td>
+<td>Computadora</td>
+<td>5</td>
+<td><span class="prioridad alta">Alta</span></td>
+<td><span class="estado aprobado">Aprobado</span></td>
+</tr>
+
+<tr>
+<td style="color:#0066ff;">REQ-2026-141</td>
+<td>08/03/2026 16:00</td>
+<td>Lab 2</td>
+<td>Ing. María García</td>
+<td>Mouse Inalámbrico</td>
+<td>10</td>
+<td><span class="prioridad media">Media</span></td>
+<td><span class="estado proceso">En proceso</span></td>
+</tr>
+
+<tr>
+<td style="color:#0066ff;">REQ-2026-140</td>
+<td>08/03/2026 11:20</td>
+<td>Lab 3</td>
+<td>Ing. Carlos López</td>
+<td>Monitor LED</td>
+<td>3</td>
+<td><span class="prioridad baja">Baja</span></td>
+<td><span class="estado pendiente">Pendiente</span></td>
+</tr>
+
+<tr>
+<td style="color:#0066ff;">REQ-2026-139</td>
+<td>07/03/2026 09:45</td>
+<td>Lab 1</td>
+<td>Ing. Ana Martínez</td>
+<td>Teclado Mecánico</td>
+<td>6</td>
+<td><span class="prioridad alta">Alta</span></td>
+<td><span class="estado aprobado">Aprobado</span></td>
+</tr>
+
+<tr>
+<td style="color:#0066ff;">REQ-2026-138</td>
+<td>06/03/2026 15:30</td>
+<td>Lab 2</td>
+<td>Ing. Pedro Ruiz</td>
+<td>Webcam HD</td>
+<td>4</td>
+<td><span class="prioridad media">Media</span></td>
+<td><span class="estado pendiente">Pendiente</span></td>
+</tr>
+
+</table>
+
+</div>
+</div>
+
+</body>
+</html>
